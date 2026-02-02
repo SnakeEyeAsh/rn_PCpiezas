@@ -1,25 +1,26 @@
-import { Stack, Link } from 'expo-router';
+import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+import {Image} from 'expo-image'
+import { useRouter } from 'expo-router'
 
-import { View } from 'react-native';
+export default function index() {
 
-import { Button } from '@/components/Button';
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
+  const router = useRouter();
 
-export default function Home() {
+  function retarsarInicio(){
+    setTimeout(()=>{router.replace('/tienda/inicio'),700})
+  };
+
+  useEffect(retarsarInicio,[]);
+
   return (
-    <View className={styles.container}>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Container>
-        <ScreenContent path="app/index.tsx" title="Home"></ScreenContent>
-        <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
-          <Button title="Show Details" />
-        </Link>
-      </Container>
+    <View className='flex-1 bg-/[#e8f7ff]'>
+      <Image
+      source={require('../logo.png')}
+      style={{width:210,height:170}}
+      /> 
     </View>
-  );
+  )
 }
 
-const styles = {
-  container: 'flex flex-1 bg-white',
-};
+const styles = StyleSheet.create({})
